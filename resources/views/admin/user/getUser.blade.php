@@ -9,8 +9,7 @@
                 <div class="box-header">
                     <i class="fa fa-group"></i>
                     <h3 class="box-title">&nbsp Người dùng</h3>
-                    <a href='user/add' class="btn btn-primary btn-sm" style="float:right">Thêm
-                        tài khoản</a>
+                    <a href='user/add' class="btn btn-primary btn-sm" style="float:right">Thêm tài khoản</a>
                 </div>
                 <div class="box-list">
                     <div class="col-md-12">

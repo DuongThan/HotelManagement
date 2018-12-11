@@ -5,23 +5,49 @@ Route::get('/', function () {
 
 // admin quản trị
 Route::group(['prefix'=>'admin'],function(){
+    Route::get('', 'admin\HomeController@getIndex');
     // Quản trị loại phòng
     Route::group(['prefix'=>'roomtype'],function(){
         Route::get('','admin\RoomTypeController@getRoomType');
+        Route::get('add','admin\RoomTypeController@addRoomType');
+        Route::post('post','admin\RoomTypeController@postRoomType');
+        Route::get('edit/{roomTypeId}','admin\RoomTypeController@editRoomType');
+        Route::post('put/{roomTypeId}','admin\RoomTypeController@putRoomType');
+        Route::get('delete/{roomTypeId}','admin\RoomTypeController@deleteRoomType');
+
         Route::get('roomtype-price','admin\RoomTypeController@getRoomTypePrice');
+        Route::get('set-price/{roomTypeId}','admin\RoomTypeController@editRoomTypePrice');
+        Route::post('putPrice/{roomTypeId}','admin\RoomTypeController@putRoomTypePrice');
     });
-    Route::get('', 'admin\HomeController@getIndex');
-    Route::get('article','admin\ArticleController@getArticle');
+
+    // Quản trị bài viết giới thiệu
+    Route::group(['prefix'=>'article'],function(){
+        Route::get('','admin\ArticleController@getArticle');
+        Route::post('put','admin\ArticleController@putArticle');
+    });
+
     Route::get('booking','admin\BookingController@getBooking');
     Route::get('contact','admin\ContactController@getContact');
-    Route::get('gallery','admin\GalleryController@getGallery');
     Route::get('home','admin\HomeController@getIndex');
-    Route::get('hotel','admin\HotelController@getHotel');
+
+    // Quản trị thông tin khách sạn
+    Route::group(['prefix'=>'hotel'],function(){
+        Route::get('','admin\HotelController@getHotel');
+        Route::post('put','admin\HotelController@putHotel');
+    });
     
     // Quản trị phòng
-    Route::get('room','admin\RoomController@getRoom');
+    Route::group(['prefix'=>'room'],function(){
+        Route::get('','admin\RoomController@getRoom');
+        Route::get('add','admin\RoomController@addRoom');
+        Route::post('post','admin\RoomController@postRoom');
+        Route::get('edit/{roomId}','admin\RoomController@editRoom');
+        Route::post('put/{roomId}','admin\RoomController@putRoom');
+        Route::get('delete/{roomId}','admin\RoomController@deleteRoom');
+    });
     Route::get('slideshow','admin\SlideShowController@getSlideShow');
 
+    // Quản trị tài khoản
     Route::group(['prefix'=>'user'],function(){
         Route::get('','admin\UserController@getUser');
         Route::get('add','admin\UserController@addUser');

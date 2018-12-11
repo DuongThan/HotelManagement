@@ -11120,7 +11120,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "Danh sách trống",
 	
 	
 			/**

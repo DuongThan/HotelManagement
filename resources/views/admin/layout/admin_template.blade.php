@@ -24,6 +24,10 @@
         table{
             border-collapse: collapse !important;
         }
+        #datatable img{
+            width:30px;
+            height:30px
+        }
     </style>
 </head>
 
@@ -62,8 +66,7 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">Điều hướng chính</li>
                     <li class="active"><a href="/admin/hotel"><i class="fa fa-home"></i> <span>Khách sạn</span></a></li>
-                    <li><a href="/admin/article"><i class="fa fa-book"></i> <span>Bài viết</span></a></li>
-                    <li><a href="/admin/gallery"><i class="fa fa-camera"></i> <span>Gallery</span></a></li>
+                    <li><a href="/admin/article"><i class="fa fa-book"></i> <span>Bài viết giới thiệu</span></a></li>
                     <li><a href="/admin/slideshow"><i class="fa fa-video-camera"></i> <span>Slide ảnh</span></a></li>
                     <li class="treeview active">
                         <a>
@@ -75,7 +78,15 @@
                             <li><a href="/admin/roomtype/roomtype-price"><i class="fa fa-circle-o"></i>Cài đặt giá phòng</a></li>
                         </ul>
                     </li>
-                    <li><a href="/admin/booking"><i class="fa fa-envelope"></i> <span>Booking</span></a></li>
+                    <li class="treeview active">
+                        <a>
+                            <i class="fa fa-envelope"></i> <span>Booking</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/diagram"><i class="fa fa-circle-o"></i>Sơ đồ phòng</a></li>
+                            <li><a href="/admin/booking"><i class="fa fa-circle-o"></i>Danh sách đặt phòng</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/admin/contact"><i class="fa fa-phone"></i> <span>Liên hệ</span></a></li>
                     <li><a href="/admin/user"><i class="fa fa-group"></i> <span>Người dùng</span></a></li>
                 </ul>

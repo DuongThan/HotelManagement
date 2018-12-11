@@ -17,7 +17,7 @@ class UserController extends Controller
     }
 
     public function editUser($userName){
-        $user = User::all()->where('userName',$userName)->first();
+        $user = User::find($userName);
         return view('admin.user.editUser',['user'=>$user]);
     }
 
@@ -55,12 +55,12 @@ class UserController extends Controller
             'password.min'=>'Độ dài mật khẩu khoản tối thiểu 8 ký tự',
             'email.required'=>'Email không được để trống'
         ]);
-        $user = User::where('userName',$userName)->first();
+        $user = User::find($userName);
         $user->password = $request->password;
         $user->email = $request->email;
         $user->status = $request->status;
         $user->save();
-        return redirect('admin/user/edit/'.$userName)->with('notification','Sửa tài khoản thành công');
+        return redirect('admin/user/edit/'.$userName)->with('notification','Cập nhật thành công');
     }
     public function deleteUser($userName){
         $user = User::find($userName);
