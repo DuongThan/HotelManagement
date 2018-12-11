@@ -10,7 +10,4 @@ class RoomController extends Controller
     public function getRoom(){
         return view('admin/room/getRoom');
     }
-    public function getRoomPrice(){
-        return view('admin/room/getRoomPrice');
-    }
 }

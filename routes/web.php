@@ -14,11 +14,17 @@ Route::get('admin/hotel','admin\HotelController@getHotel');
 
 // Quản trị phòng
 Route::get('admin/room','admin\RoomController@getRoom');
-Route::get('admin/room-price','admin\RoomController@getRoomPrice');
+
+// Quản trị loại phòng
+Route::get('admin/roomtype','admin\RoomTypeController@getRoomType');
+Route::get('admin/roomtype-price','admin\RoomTypeController@getRoomTypePrice');
 
 
 Route::get('admin/slideshow','admin\SlideShowController@getSlideShow');
 Route::get('admin/user','admin\UserController@getUser');
-
+Route::get('data/user',function(){
+    $data = DB::table('user')->get();
+    var_dump($data);
+});
 // Website
 Route::get('index','HomeController@Index');

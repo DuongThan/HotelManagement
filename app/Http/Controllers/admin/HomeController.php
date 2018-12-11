@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function getIndex(){
-        return view('admin/layout/admin_template');
+        return view('admin/home/getIndex');
     }
 }
