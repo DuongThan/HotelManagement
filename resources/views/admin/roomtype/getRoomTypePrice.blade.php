@@ -25,6 +25,7 @@
                                         <th>Tên loại phòng</th>
                                         <th style="width:70px">Hình ảnh</th>
                                         <th style="width:150px">Giá (₫)</th>
+                                        <th style="width:150px">Số lượng phòng bán</th>
                                         <th style="width:150px"></th>
                                     </tr>
                                 </thead>
@@ -37,6 +38,7 @@
                                             <img src="/images/{{$item->image}}" alt="">
                                         </td>
                                         <td>{{$item->price}}</td>
+                                        <td>{{$item->number}}</td>
                                         <td class="text-center">
                                             <a href="/admin/roomtype/set-price/{{$item->roomTypeId}}" class="btn btn-primary btn-sm">Cài đặt giá</a>
                                         </td>

@@ -25,6 +25,7 @@ class RoomTypeController extends Controller
     public function putRoomTypePrice($roomTypeId,Request $request){
         $roomType = RoomType::find($roomTypeId);
         $roomType->price = $request->price;
+        $roomType->number = $request->number;
         $roomType->save();
         return redirect('admin/roomtype/roomtype-price')->with('notification','Cập nhật thành công');
     }
@@ -60,6 +61,7 @@ class RoomTypeController extends Controller
         $roomType->title = $request->title;
         $roomType->image = $name;
         $roomType->price = 0;
+        $roomType->number = 0;
         $roomType->index = $request->index;
         $roomType->save();
         return redirect('admin/roomtype/add')->with('notification','Thêm loại phòng thành công');

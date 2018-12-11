@@ -1,0 +1,22 @@
+.box-search-room fieldset {
+    border: 1px solid #dcdcdc !important;
+    padding: 10px 10px 0 10px !IMPORTANT;
+    margin: 0 !important;
+}
+
+.box-search-room fieldset legend {
+    border-bottom: none;
+    width: auto;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 13px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 50px;
+}
