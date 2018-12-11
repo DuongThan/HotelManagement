@@ -4,27 +4,47 @@ Route::get('/', function () {
 });
 
 // admin quản trị
-Route::get('admin', 'admin\HomeController@getIndex');
-Route::get('admin/article','admin\ArticleController@getArticle');
-Route::get('admin/booking','admin\BookingController@getBooking');
-Route::get('admin/contact','admin\ContactController@getContact');
-Route::get('admin/gallery','admin\GalleryController@getGallery');
-Route::get('admin/home','admin\HomeController@getIndex');
-Route::get('admin/hotel','admin\HotelController@getHotel');
+Route::group(['prefix'=>'admin'],function(){
+    // Quản trị loại phòng
+    Route::group(['prefix'=>'roomtype'],function(){
+        Route::get('','admin\RoomTypeController@getRoomType');
+        Route::get('roomtype-price','admin\RoomTypeController@getRoomTypePrice');
+    });
+    Route::get('', 'admin\HomeController@getIndex');
+    Route::get('article','admin\ArticleController@getArticle');
+    Route::get('booking','admin\BookingController@getBooking');
+    Route::get('contact','admin\ContactController@getContact');
+    Route::get('gallery','admin\GalleryController@getGallery');
+    Route::get('home','admin\HomeController@getIndex');
+    Route::get('hotel','admin\HotelController@getHotel');
+    
+    // Quản trị phòng
+    Route::get('room','admin\RoomController@getRoom');
+    Route::get('slideshow','admin\SlideShowController@getSlideShow');
 
-// Quản trị phòng
-Route::get('admin/room','admin\RoomController@getRoom');
-
-// Quản trị loại phòng
-Route::get('admin/roomtype','admin\RoomTypeController@getRoomType');
-Route::get('admin/roomtype-price','admin\RoomTypeController@getRoomTypePrice');
-
-
-Route::get('admin/slideshow','admin\SlideShowController@getSlideShow');
-Route::get('admin/user','admin\UserController@getUser');
+    Route::group(['prefix'=>'user'],function(){
+        Route::get('','admin\UserController@getUser');
+        Route::get('add','admin\UserController@addUser');
+        Route::post('post','admin\UserController@postUser');
+        Route::get('edit/{userName}','admin\UserController@editUser');
+        Route::post('put/{userName}','admin\UserController@putUser');
+        Route::get('delete/{userName}','admin\UserController@deleteUser');
+    });
+});
 Route::get('data/user',function(){
-    $data = DB::table('user')->get();
-    var_dump($data);
+     $data = DB::table('user')->get();
+    foreach($data as $item){
+        echo $item->userName.'<br>';
+    }
+});
+Route::get('data/postUser',function(){
+    $user = new App\User();
+    $user->userName = "admin1";
+    $user->password = "12345678";
+    $user->email = "email@gmail.com";
+    $user->status = 1;
+    $user->save();
+    echo 'success';
 });
 // Website
 Route::get('index','HomeController@Index');

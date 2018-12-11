@@ -72,7 +72,7 @@
                         <ul class="treeview-menu">
                             <li><a href="/admin/roomtype"><i class="fa fa-circle-o"></i>Loại phòng</a></li>
                             <li><a href="/admin/room"><i class="fa fa-circle-o"></i>Danh sách phòng</a></li>
-                            <li><a href="/admin/roomtype-price"><i class="fa fa-circle-o"></i>Cài đặt giá phòng</a></li>
+                            <li><a href="/admin/roomtype/roomtype-price"><i class="fa fa-circle-o"></i>Cài đặt giá phòng</a></li>
                         </ul>
                     </li>
                     <li><a href="/admin/booking"><i class="fa fa-envelope"></i> <span>Booking</span></a></li>
