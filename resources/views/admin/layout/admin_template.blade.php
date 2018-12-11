@@ -28,6 +28,9 @@
             width:30px;
             height:30px
         }
+        #datatable_slideshow img{
+            height:30px
+        }
     </style>
 </head>
 

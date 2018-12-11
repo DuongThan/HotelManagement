@@ -38,7 +38,7 @@ class UserController extends Controller
         ]);
         $user = new User();
         $user->userName = $request->userName;
-        $user->password = $request->password;
+        $user->password = md5($request->password);
         $user->email = $request->email;
         $user->status = 1;
         $user->save();
@@ -47,16 +47,15 @@ class UserController extends Controller
     public function putUser($userName,Request $request){
         $this->validate($request,
         [
-            'password'=>'required|min:8',
             'email'=>'required|min:8'
         ],
         [
-            'password.required'=>'Mật khẩu không được để trống',
-            'password.min'=>'Độ dài mật khẩu khoản tối thiểu 8 ký tự',
             'email.required'=>'Email không được để trống'
         ]);
         $user = User::find($userName);
-        $user->password = $request->password;
+        if($request->password != null && $request->password!=''){
+            $user->password = md5($request->password);
+        }
         $user->email = $request->email;
         $user->status = $request->status;
         $user->save();

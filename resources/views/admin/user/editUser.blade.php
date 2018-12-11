@@ -37,7 +37,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Mật khẩu</label>
-                                        <input value="{{$user->password}}" require type="text" name="password" class="form-control" placeholder="Mật khẩu">
+                                        <p>* Mật khẩu sẽ được giữ như cũ nếu không điền trường này</p>
+                                        <input value="" require type="text" name="password" class="form-control" placeholder="Mật khẩu">
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>

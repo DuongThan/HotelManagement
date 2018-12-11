@@ -10,11 +10,11 @@ class RoomTypeController extends Controller
 {
     public function getRoomType(){
         $roomtypes = RoomType::orderBy('index','asc')->get();
-        return view('admin/roomtype/getRoomType',['roomtypes'=>$roomtypes]);
+        return view('admin.roomtype.getRoomType',['roomtypes'=>$roomtypes]);
     }
     public function getRoomTypePrice(){
         $roomtypes = RoomType::orderBy('index','asc')->get();
-        return view('admin/roomtype/getRoomTypePrice',['roomtypes'=>$roomtypes]);
+        return view('admin.roomtype.getRoomTypePrice',['roomtypes'=>$roomtypes]);
     }
 
     public function editRoomTypePrice($roomTypeId){

@@ -27,7 +27,14 @@ Route::group(['prefix'=>'admin'],function(){
     });
 
     Route::get('booking','admin\BookingController@getBooking');
-    Route::get('contact','admin\ContactController@getContact');
+
+    // Quản trị thông tin khách sạn
+    Route::group(['prefix'=>'contact'],function(){
+        Route::get('','admin\ContactController@getContact');
+        Route::get('edit/{contactId}','admin\ContactController@editContact');
+        Route::get('delete/{contactId}','admin\ContactController@deleteContact');
+    });
+    
     Route::get('home','admin\HomeController@getIndex');
 
     // Quản trị thông tin khách sạn
@@ -45,7 +52,16 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('put/{roomId}','admin\RoomController@putRoom');
         Route::get('delete/{roomId}','admin\RoomController@deleteRoom');
     });
-    Route::get('slideshow','admin\SlideShowController@getSlideShow');
+
+    // Quản trị Slideshow
+    Route::group(['prefix'=>'slideshow'],function(){
+        Route::get('','admin\SlideShowController@getSlideShow');
+        Route::get('add','admin\SlideShowController@addSlideShow');
+        Route::post('post','admin\SlideShowController@postSlideShow');
+        Route::get('edit/{slideShowId}','admin\SlideShowController@editSlideShow');
+        Route::post('put/{slideShowId}','admin\SlideShowController@putSlideShow');
+        Route::get('delete/{slideShowId}','admin\SlideShowController@deleteSlideShow');
+    });
 
     // Quản trị tài khoản
     Route::group(['prefix'=>'user'],function(){

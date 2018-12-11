@@ -76,9 +76,9 @@
         </div>
     </div>
     <script>
-        function confirmDelete(userName) {
+        function confirmDelete(roomId) {
             $("#myModal").modal()
-            $("#linkDelete").attr("href", '/admin/room/delete/' + userName)
+            $("#linkDelete").attr("href", '/admin/room/delete/' + roomId)
         }
 
     </script>
