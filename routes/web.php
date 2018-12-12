@@ -72,5 +72,9 @@ Route::group(['prefix'=>'admin'],function(){
 // Website
 Route::get('','HomeController@Index');
 Route::get('gioi-thieu','HomeController@Index');
+
 Route::get('dat-phong','BookingController@Index');
+Route::get('ajax','BookingController@firstAjax');
+
+
 Route::get('lien-he','BookingController@Index');

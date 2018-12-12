@@ -39,10 +39,6 @@
                                     <label>Giá</label>
                                     <input value="{{$roomtype->price}}" require type="text" name="price" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label>Số lượng phòng bán</label>
-                                    <input value="{{$roomtype->number}}" require type="number" min='0' name="number" class="form-control">
-                                </div>
                                 <div>
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                                     <a href="/admin/roomtype/roomtype-price" class="btn btn-default">Trở về</a>

@@ -124,6 +124,8 @@ body {
 .box-booking-book{
     min-height: 200px;
     border: 1px solid #dcdcdc;
+    overflow: hidden;
+    padding-bottom: 50px;
 }
 .box-booking-book .header-booking-book{
     text-align: center;
@@ -131,6 +133,7 @@ body {
     margin: 0;
     padding: 10px;
     border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 10px;
 }
 .book-empty{
     text-align: center;
@@ -179,4 +182,11 @@ body {
 }
 .box-list-room:first-child{
     padding-top: 0;
+}
+.book-totalprice{
+    text-align: center;
+}
+.book-totalprice span{
+    font-size: 20px;
+    font-weight: bold;
 }
