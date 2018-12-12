@@ -24,8 +24,8 @@
                 <div class="row">
                     <div class="col-md-12" style="padding: 10px 15px;">
                         <a href="/">
-                            <span class="con-item uppercaseText"><i class="fa fa-home fa-fw"></i>ezBooking
-                                Demo</span>
+                            <span class="con-item uppercaseText"><i class="fa fa-home fa-fw"></i>
+                            {{ Session::get('hotel')->name }}</span>
                         </a>
                         <span class="con-item">
                             <i class="glyphicon glyphicon-star"></i>
@@ -36,13 +36,13 @@
                         </span>
                         <span class="con-item">
                             <i class="fa fa-envelope fa-fw"></i>Email:
-                            <a href="mailto:nhom2hotel@gmail.vn">nhom2hotel@gmail.vn</a></span>
+                            <a href="{{ Session::get('hotel')->email }}">{{ Session::get('hotel')->email }}</a></span>
                         <span class="con-item">
                             <i class="fa fa-phone-square fa-fw"></i> Hotline:
-                            <a href="tel:1900 6159">1900 6159</a></span>
+                            <a href="tel:{{ Session::get('hotel')->hotline }}">{{ Session::get('hotel')->hotline }}</a></span>
                         <span class="con-item">
-                            <i class="fa fa-globe fa-fw"></i>Website:
-                            <a href="https://nhom2hotel.vn" style="color: #3e4d5c">https://nhom2hotel.vn</a></span>
+                            <i class="fa fa-globe fa-fw"></i>Địa chỉ:
+                            <a href="{{ Session::get('hotel')->address }}" style="color: #3e4d5c">{{ Session::get('hotel')->address }}</a></span>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                             <div class="container-fluid">
                                 <div class="navbar-header">
                                     <a href="/">
-                                        <img src="/images/1544585333.logo.png">
+                                        <img src="/images/{{ Session::get('hotel')->logo }}">
                                     </a>
                                 </div>
                                 <ul class="nav navbar-nav">

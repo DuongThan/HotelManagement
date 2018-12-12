@@ -16,7 +16,7 @@
         <div class="row" style="margin-top:10px">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-9" ng-cloak>
+                    <div class="col-md-9">
                         @foreach($roomtypes as $item)
                         <div class="box-list-room">
                             <div class="row">
@@ -45,7 +45,7 @@
                         @endforeach
                     </div>
                     <div class="col-md-3">
-                        <div class="box-booking-book">
+                        <div class="box-booking-book"  ng-cloak>
                             <h5 class="header-booking-book">Thông tin đặt phòng</h5>
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -94,7 +94,10 @@
                                 </h5>
                             </div>
                             <div ng-if="roomBooks.length > 0" class="col-md-12 text-center" style="margin-top:20px">
-                                <button class="btn btn-primary">Đặt phòng</button>
+                                <form method="post" action="saveSessionBooking">
+                                    <input type="hidden" id="dataWaitPost" name="datapost"/>
+                                    <button class="btn btn-primary">Đặt phòng</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -129,6 +132,7 @@
                 for (var i = 0; i < $scope.roomBooks.length; i++) {
                     $scope.totalPrice += $scope.roomBooks[i].price * $scope.roomBooks[i].number
                 }
+                $("#dataWaitPost").val(JSON.stringify($scope.roomBooks))
             }
         }
     });
