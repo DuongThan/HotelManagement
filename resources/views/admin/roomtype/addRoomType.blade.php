@@ -36,6 +36,22 @@
                                     <input require type="file" name="input_img" class="form-control" accept="image/*">
                                 </div>
                                 <div class="form-group">
+                                    <label>Giới thiệu phòng</label>
+                                    <textarea name="description" cols="20" rows="8"></textarea>
+                                    <script type="text/javascript">
+                                        var editor2 = CKEDITOR.replace('description', {
+                                            language: 'vi',
+                                            filebrowserBrowseUrl: '../../ckfinder/ckfinder.html',
+                                            filebrowserImageBrowseUrl: '../../ckfinder/ckfinder.html?type=Images',
+                                            filebrowserFlashBrowseUrl: '../../ckfinder/ckfinder.html?type=Flash',
+                                            filebrowserUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                            filebrowserImageUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                            filebrowserFlashUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                                        });
+
+                                    </script>
+                                </div>
+                                <div class="form-group">
                                     <label>Thứ tự</label>
                                     <input require type="number" min="0" value="0" name="index" class="form-control">
                                 </div>

@@ -1,12 +1,9 @@
 @extends('admin.layout.admin_template')
+@section('title', 'Trang quản trị')
 @section("content")
 <section class="content-header">
     <h1>
-        Page Header
-        <small>Optional description</small>
+        Chọn một phần từ menu bên trái
     </h1>
-</section>
-<section class="content container-fluid">
-    header
 </section>
 @endsection

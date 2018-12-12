@@ -33,11 +33,36 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn</label>
-                                    <input require value="{{$article->description}}" type="text" name="description" class="form-control">
+                                    <textarea value="{{$article->description}}" name="description" cols="20" rows="8">{!! Request::old('description', $article->description) !!}</textarea>
+                                    <script type="text/javascript">
+                                        var editor2 = CKEDITOR.replace('description', {
+                                            language: 'vi',
+                                            filebrowserBrowseUrl: '../../ckfinder/ckfinder.html',
+                                            filebrowserImageBrowseUrl: '../../ckfinder/ckfinder.html?type=Images',
+                                            filebrowserFlashBrowseUrl: '../../ckfinder/ckfinder.html?type=Flash',
+                                            filebrowserUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                            filebrowserImageUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                            filebrowserFlashUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                                        });
+
+                                    </script>
                                 </div>
                                 <div class="form-group">
                                     <label>Nội dung</label>
-                                    <input require value="{{$article->content}}" type="text" name="content" class="form-control">
+                                    <!-- <input require value="{{$article->content}}" type="text" name="content" class="form-control"> -->
+                                    <textarea value="{{$article->content}}" name="content" cols="30" rows="10">{!! Request::old('content', $article->content) !!}</textarea>
+                                    <script type="text/javascript">
+                                        var editor = CKEDITOR.replace('content', {
+                                            language: 'vi',
+                                            filebrowserBrowseUrl: '../../ckfinder/ckfinder.html',
+                                            filebrowserImageBrowseUrl: '../../ckfinder/ckfinder.html?type=Images',
+                                            filebrowserFlashBrowseUrl: '../../ckfinder/ckfinder.html?type=Flash',
+                                            filebrowserUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                            filebrowserImageUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                            filebrowserFlashUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                                        });
+
+                                    </script>
                                 </div>
                                 <div class="text-center col-md-12" style="margin-bottom: 30px;">
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>

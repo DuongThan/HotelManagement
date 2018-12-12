@@ -60,6 +60,7 @@ class RoomTypeController extends Controller
         $roomType = new RoomType();
         $roomType->title = $request->title;
         $roomType->image = $name;
+        $roomType->description = $request->description;
         $roomType->price = 0;
         $roomType->number = 0;
         $roomType->index = $request->index;
@@ -69,6 +70,7 @@ class RoomTypeController extends Controller
     public function putRoomType($roomTypeId,Request $request){
         $roomType = RoomType::find($roomTypeId);
         $roomType->index = $request->index;
+        $roomType->description = $request->description;
         if ($request->hasFile('input_img')) {
             $image = $request->file('input_img');
             $name = time().'.'.$image->getClientOriginalName();

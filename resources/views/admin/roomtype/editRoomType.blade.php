@@ -40,10 +40,26 @@
                                     <input require type="file" name="input_img" class="form-control" accept="image/*">
                                 </div>
                                 <div class="form-group">
+                                    <label>Giới thiệu phòng</label>
+                                    <textarea value="{{$roomtype->description}}" name="description" cols="20" rows="8">{!! Request::old('description', $roomtype->description) !!}</textarea>
+                                    <script type="text/javascript">
+                                        var editor2 = CKEDITOR.replace('description', {
+                                            language: 'vi',
+                                            filebrowserBrowseUrl: '../../ckfinder/ckfinder.html',
+                                            filebrowserImageBrowseUrl: '../../ckfinder/ckfinder.html?type=Images',
+                                            filebrowserFlashBrowseUrl: '../../ckfinder/ckfinder.html?type=Flash',
+                                            filebrowserUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                            filebrowserImageUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                            filebrowserFlashUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                                        });
+
+                                    </script>
+                                </div>
+                                <div class="form-group">
                                     <label>Thứ tự</label>
                                     <input value="{{$roomtype->index}}" require type="number" min="0" value="0" name="index" class="form-control">
                                 </div>
-                                <div>
+                                <div style="margin-bottom:50px">
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                                     <a href="/admin/roomtype" class="btn btn-default">Trở về danh sách loại phòng</a>
                                 </div>

@@ -1,7 +1,4 @@
 <?php
-Route::get('/', function () {
-    return view('Home');
-});
 
 // admin quản trị
 Route::group(['prefix'=>'admin'],function(){
@@ -34,8 +31,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('edit/{contactId}','admin\ContactController@editContact');
         Route::get('delete/{contactId}','admin\ContactController@deleteContact');
     });
-    
-    Route::get('home','admin\HomeController@getIndex');
 
     // Quản trị thông tin khách sạn
     Route::group(['prefix'=>'hotel'],function(){
@@ -73,20 +68,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('delete/{userName}','admin\UserController@deleteUser');
     });
 });
-Route::get('data/user',function(){
-     $data = DB::table('user')->get();
-    foreach($data as $item){
-        echo $item->userName.'<br>';
-    }
-});
-Route::get('data/postUser',function(){
-    $user = new App\User();
-    $user->userName = "admin1";
-    $user->password = "12345678";
-    $user->email = "email@gmail.com";
-    $user->status = 1;
-    $user->save();
-    echo 'success';
-});
+
 // Website
-Route::get('index','HomeController@Index');
+Route::get('','HomeController@Index');
+Route::get('gioi-thieu','HomeController@Index');
+Route::get('dat-phong','BookingController@Index');
+Route::get('lien-he','BookingController@Index');

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/dist/css/AdminLTE.min.css")}}">
     <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/dist/css/skins/skin-blue-light.min.css")}}">
     <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css")}}">
+    <script src="{{ asset("/ckeditor/ckeditor.js")}}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
         .box{
@@ -78,7 +79,8 @@
                         <ul class="treeview-menu">
                             <li><a href="/admin/roomtype"><i class="fa fa-circle-o"></i>Loại phòng</a></li>
                             <li><a href="/admin/room"><i class="fa fa-circle-o"></i>Danh sách phòng</a></li>
-                            <li><a href="/admin/roomtype/roomtype-price"><i class="fa fa-circle-o"></i>Cài đặt giá phòng</a></li>
+                            <li><a href="/admin/roomtype/roomtype-price"><i class="fa fa-circle-o"></i>Cài đặt giá
+                                    phòng</a></li>
                         </ul>
                     </li>
                     <li class="treeview active">
@@ -124,4 +126,5 @@
     });
 
 </script>
+
 </html>

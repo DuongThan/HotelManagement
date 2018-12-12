@@ -20,3 +20,163 @@
     padding-right: 5px;
     margin-top: 50px;
 }
+
+@media (max-width: 768px) {
+    .navbar-header {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .navbar-header img {
+        height: 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-nav {
+        margin-left: 30px;
+    }
+
+    .box-menu {
+        transition: all .3s ease-in-out;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, .1);
+        background-color: #fff;
+        height: 80px;
+    }
+
+    .box-menu .container-fluid .navbar-nav {
+        margin-top: 15px;
+        font-size: 15px;
+    }
+
+    .navbar-header img {
+        height: 70px;
+        margin-top: 5px;
+    }
+}
+
+body {
+    font-family: montserrat, sans-serif;
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover {
+    text-decoration: underline;
+    background-color: #fff;
+}
+
+.navbar-nav>li>a {
+    color: #000 !important;
+}
+
+@media (min-width: 768px) {
+    .sectionTitle {
+        margin-bottom: 48px;
+    }
+
+    .sectionTitle h2 {
+        font-size: 26px;
+    }
+}
+
+.sectionTitle {
+    text-align: center;
+}
+
+.sectionTitle h2 {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.sectionTitle h2:before {
+    background-color: #e5e5e5;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+}
+.sectionTitle h2 span {
+    padding-left: 38px;
+    padding-right: 38px;
+    z-index: 5;
+    position: relative;    
+    background: white;
+}
+.glyphicon-star{
+    color: #ffd600; 
+    font-size: 14px
+}
+.con-item{
+    margin-right: 10px;
+    font-size: 12px;
+    color: black !IMPORTANT;
+}
+.con-item a{
+    color: black !IMPORTANT;
+}
+.container-fluid{
+    padding: 0;
+}
+.box-booking-book{
+    min-height: 200px;
+    border: 1px solid #dcdcdc;
+}
+.box-booking-book .header-booking-book{
+    text-align: center;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #dcdcdc;
+}
+.book-empty{
+    text-align: center;
+    font-weight: 700;
+    color: #00000080;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.room-name{
+    color: #0088b1;
+    font-weight: 600;
+}
+.room-price{
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000b3;
+}
+.room-image{
+    width: 100%;
+    border: 1px solid #636363;
+    padding: 2px;
+}
+.box-add-room{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.box-add-room select{
+    margin-bottom: 10px;
+}
+@media (min-width: 1200px)
+{
+    .container {
+        width: 1290px;
+    }
+}
+.btn{
+    white-space: normal;
+}
+.box-list-room{
+    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.box-list-room:last-child{
+    border: none
+}
+.box-list-room:first-child{
+    padding-top: 0;
+}
