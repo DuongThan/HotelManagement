@@ -45,60 +45,62 @@
                         @endforeach
                     </div>
                     <div class="col-md-3">
-                        <div class="box-booking-book"  ng-cloak>
+                        <div class="box-booking-book" ng-cloak>
                             <h5 class="header-booking-book">Thông tin đặt phòng</h5>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <span class="hotel-search-label">Ngày đến:</span>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                        <input id="checkInDate" type="date" class="form-control" name="checkInDate"
-                                            value="{{date('Y-m-d')}}" maxlength="10">
+                            <form method="post" action="saveSessionBooking">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <span class="hotel-search-label">Ngày đến:</span>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="date" class="form-control" name="checkIn"
+                                                value="{{date('Y-m-d')}}" maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="hotel-search-label">Ngày đi:</span>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="date" class="form-control" name="checkOut"
+                                                value="{{$checkout}}" maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="hotel-search-label">Người lớn:</span>
+                                        <select name="adult" class="form-control">
+                                            @for ($i =1; $i <= 10 ; $i++) <option {{$i == 2?'selected':''}} value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="hotel-search-label">Trẻ em:</span>
+                                        <select name="child" class="form-control">
+                                            @for ($i = 0; $i <= 5 ; $i++) <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <span class="hotel-search-label">Ngày đi:</span>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                        <input id="checkInDate" type="date" class="form-control" name="checkInDate"
-                                            value="{{$checkout}}" maxlength="10">
-                                    </div>
+                                <div class="col-md-12" ng-if="roomBooks.length == 0">
+                                    <h4 class="book-empty">VUI LÒNG CHỌN PHÒNG</h4>
                                 </div>
-                                <div class="form-group">
-                                    <span class="hotel-search-label">Người lớn:</span>
-                                    <select class="form-control">
-                                        @for ($i =1; $i <= 10 ; $i++) <option {{$i == 2?'selected':''}} value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                    </select>
+                                <div class="col-md-12" ng-if="roomBooks.length > 0">
+                                    <h5 class="book-empty">Phòng đã chọn</h5>
+                                    <ul style="padding-left: 20px;">
+                                        <li ng-repeat="item in roomBooks" style="color: #0088b1;">
+                                            @{{item.title}} x @{{item.number}}
+                                        </li>
+                                    </ul>
+                                    <h5 class="book-totalprice">
+                                        Tổng: <span>@{{totalPrice |currency: '':'0'}} ₫</span>
+                                    </h5>
                                 </div>
-                                <div class="form-group">
-                                    <span class="hotel-search-label">Trẻ em:</span>
-                                    <select class="form-control">
-                                        @for ($i = 0; $i <= 5 ; $i++) <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12" ng-if="roomBooks.length == 0">
-                                <h4 class="book-empty">VUI LÒNG CHỌN PHÒNG</h4>
-                            </div>
-                            <div class="col-md-12" ng-if="roomBooks.length > 0">
-                                <h5 class="book-empty">Phòng đã chọn</h5>
-                                <ul style="padding-left: 20px;">
-                                    <li ng-repeat="item in roomBooks" style="color: #0088b1;">
-                                        @{{item.title}} x @{{item.number}}
-                                    </li>
-                                </ul>
-                                <h5 class="book-totalprice">
-                                    Tổng: <span>@{{totalPrice |currency: '':'0'}} ₫</span>
-                                </h5>
-                            </div>
-                            <div ng-if="roomBooks.length > 0" class="col-md-12 text-center" style="margin-top:20px">
-                                <form method="post" action="saveSessionBooking">
-                                    <input type="hidden" id="dataWaitPost" name="datapost"/>
+                                <div class="@{{roomBooks.length == 0?'hidden':''}} col-md-12 text-center" style="margin-top:20px">
+
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <input type="hidden" id="dataWaitPost" name="datapost" />
                                     <button class="btn btn-primary">Đặt phòng</button>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -132,7 +134,9 @@
                 for (var i = 0; i < $scope.roomBooks.length; i++) {
                     $scope.totalPrice += $scope.roomBooks[i].price * $scope.roomBooks[i].number
                 }
-                $("#dataWaitPost").val(JSON.stringify($scope.roomBooks))
+                var jsondata = JSON.stringify($scope.roomBooks);
+                $("#dataWaitPost").val(jsondata)
+                console.log(jsondata)
             }
         }
     });

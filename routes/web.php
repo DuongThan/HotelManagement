@@ -75,6 +75,7 @@ Route::get('gioi-thieu','HomeController@Index');
 
 Route::get('dat-phong','BookingController@Index');
 Route::post('saveSessionBooking','BookingController@SaveSessionBooking');
-
-
-Route::get('lien-he','BookingController@Index');
+Route::get('confirm','BookingController@ConfirmBooking');
+Route::post('postBooking','BookingController@PostBooking');
+Route::get('lien-he','ContactController@Index');
+Route::post('postContact','ContactController@PostContact');
