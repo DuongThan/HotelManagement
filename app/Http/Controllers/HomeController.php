@@ -9,8 +9,6 @@ use Session;
 class HomeController extends Controller
 {
     public function Index(){
-        $hotels = Hotel::first()->select('name','logo','hotline','email','address','favicon')->first();
-        Session::put('hotel', $hotels );
         $article = Article::first();
         return view('home',['article'=>$article]);
     }

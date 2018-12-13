@@ -8,10 +8,13 @@ use App\Booking;
 use Carbon\Carbon;
 use Session;
 use DateTime;
+use App\Hotel;
 
 class BookingController extends Controller
 {
     public function Index(){
+        $hotels = Hotel::first()->select('name','logo','hotline','email','address','favicon')->first();
+        Session::put('hotel', $hotels );
         $roomtypes = RoomType::orderBy('index','asc')->get();
         $booking = new Booking();
         $booking->checkIn = Carbon::now()->format('Y-m-d');

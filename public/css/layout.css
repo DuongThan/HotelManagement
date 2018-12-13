@@ -190,3 +190,8 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
+.remove-booking{
+    color: #d61414;
+    float: right;
+    cursor: pointer;
+}

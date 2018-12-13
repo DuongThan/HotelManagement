@@ -60,6 +60,7 @@
                                 <ul style="padding-left: 20px;">
                                     <li ng-repeat="item in roomBooks" style="color: #0088b1;">
                                         @{{item.title}} x @{{item.number}}
+                                        <i ng-click="removeBooking($index)" class="fa  fa-remove remove-booking"></i>
                                     </li>
                                 </ul>
                                 <h5 class="book-totalprice">
@@ -138,6 +139,11 @@
                 $("#dataWaitPost").val(jsondata)
                 console.log(jsondata)
             }
+        }
+        $scope.removeBooking = function (index) {
+            $scope.roomBooks.splice(index, 1);
+            var jsondata = JSON.stringify($scope.roomBooks);
+            $("#dataWaitPost").val(jsondata)
         }
     });
 
