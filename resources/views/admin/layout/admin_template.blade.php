@@ -33,7 +33,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-power-off"></i></a>
+                            <a href="/admin/logout"><i class="fa fa-power-off"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -101,11 +101,12 @@
     $(function () {
         $('#datatable').DataTable({
             "paging": true,
-            "lengthChange": false,
-            "searching": false,
+            "lengthChange": true,
+            "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": false
+            "autoWidth": false,
+            "order": []
         });
     });
 

@@ -7,10 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Booking;
 use App\Room;
 use Carbon\Carbon;
+use Session;
 
 class BookingController extends Controller
 {
     public function getBooking(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $bookings = Booking::orderBy('dateBook','desc')
                     ->join('RoomType', 'Booking.roomTypeId', '=', 'RoomType.roomTypeId')
                     ->leftJoin('Room', 'Booking.roomId', '=', 'Room.roomId')
@@ -19,6 +22,8 @@ class BookingController extends Controller
         return view('admin/booking/getBooking',['bookings'=>$bookings]);
     }
     public function editBooking($bookingId){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $booking = Booking::join('RoomType', 'Booking.roomTypeId', '=', 'RoomType.roomTypeId')
                     ->leftJoin('Room', 'Booking.roomId', '=', 'Room.roomId')
                     ->select('Booking.*','RoomType.title','Room.code')
@@ -41,6 +46,8 @@ class BookingController extends Controller
     }
 
     public function getDiagramBooking(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $rooms = Room::orderBy('index','asc')
                     ->join('RoomType', 'Room.roomTypeId', '=', 'RoomType.roomTypeId')
                     ->select('Room.*','RoomType.title')

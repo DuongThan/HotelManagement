@@ -24,7 +24,7 @@
                                         <th>Ngày đi</th>
                                         <th>Số khách</th>
                                         <th>Email</th>
-                                        <th>Số điện thoại</th>
+                                        <th>Giá phòng (₫)</th>
                                         <th>Ngày đặt</th>
                                         <th>Trạng thái</th>
                                         <th></th>
@@ -41,7 +41,7 @@
                                         <td class="text-center">{{$item->checkOut}}</td>
                                         <td class="text-center">{{$item->adult}}</td>
                                         <td>{{$item->email}}</td>
-                                        <td>{{$item->phone}}</td>
+                                        <td>{{number_format($item->totalMoney ,0 ,'.' ,'.')}}</td>
                                         <td class="text-center">{{$item->dateBook}}</td>
                                         <td class="text-center">
                                             @if($item->status == 1)

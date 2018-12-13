@@ -6,21 +6,28 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Room;
 use App\RoomType;
+use Session;
 
 class RoomController extends Controller
 {
     public function getRoom(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $rooms = Room::orderBy('index','asc')
                     ->join('RoomType', 'Room.roomTypeId', '=', 'RoomType.roomTypeId')
                     ->select('Room.*', 'RoomType.title')->get();
         return view('admin/room/getRoom',['rooms'=>$rooms]);
     }
     public function addRoom(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $roomtypes = RoomType::orderBy('index','asc')->get();
         return view('admin.room.addRoom',['roomtypes'=>$roomtypes]);
     }
 
     public function editRoom($roomId){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $room = Room::find($roomId);
         $roomtypes = RoomType::orderBy('index','asc')->get();
         return view('admin.room.editRoom',['room'=>$room],['roomtypes'=>$roomtypes]);

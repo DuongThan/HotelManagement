@@ -5,10 +5,13 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Article;
+use Session;
 
 class ArticleController extends Controller
 {
     public function getArticle(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $article = Article::first();
         return view('admin/article/getArticle',['article'=>$article]);
     }

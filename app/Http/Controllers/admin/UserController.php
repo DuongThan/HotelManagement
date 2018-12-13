@@ -5,18 +5,26 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Session;
+
 class UserController extends Controller
 {
     public function getUser(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $users = User::all();
         return view('admin.user.getUser',['users'=>$users]);
     }
 
     public function addUser(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         return view('admin.user.addUser');
     }
 
     public function editUser($userName){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $user = User::find($userName);
         return view('admin.user.editUser',['user'=>$user]);
     }

@@ -35,7 +35,7 @@
                                 <input value="{{$booking->title}}" readonly type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Số phòng: {{$booking->roomId}}</label>
+                                <label>Số phòng:</label>
                                 <div class="input-group margin" style="margin: 0;">
                                     <select name="roomId" class="form-control">
                                         <option {{$booking->roomId == -1?'selected':''}} value="">-- Chưa gán phòng --</option>

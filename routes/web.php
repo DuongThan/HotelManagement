@@ -2,6 +2,11 @@
 
 // admin quản trị
 Route::group(['prefix'=>'admin'],function(){
+    
+    Route::get('login','admin\HomeController@Login');
+    Route::post('login','admin\HomeController@postLogin');
+    Route::get('logout','admin\HomeController@Logout');
+
     Route::get('', 'admin\HomeController@getIndex');
     // Quản trị loại phòng
     Route::group(['prefix'=>'roomtype'],function(){

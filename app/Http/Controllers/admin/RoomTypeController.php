@@ -5,19 +5,26 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\RoomType;
+use Session;
 
 class RoomTypeController extends Controller
 {
     public function getRoomType(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $roomtypes = RoomType::orderBy('index','asc')->get();
         return view('admin.roomtype.getRoomType',['roomtypes'=>$roomtypes]);
     }
     public function getRoomTypePrice(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $roomtypes = RoomType::orderBy('index','asc')->get();
         return view('admin.roomtype.getRoomTypePrice',['roomtypes'=>$roomtypes]);
     }
 
     public function editRoomTypePrice($roomTypeId){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $roomtype = RoomType::find($roomTypeId);
         return view('admin.roomtype.editRoomTypePrice',['roomtype'=>$roomtype]);
     }
@@ -30,6 +37,8 @@ class RoomTypeController extends Controller
     }
 
     public function addRoomType(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         return view('admin.roomtype.addRoomType');
     }
 

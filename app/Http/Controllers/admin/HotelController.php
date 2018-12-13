@@ -5,10 +5,13 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Hotel;
+use Session;
 
 class HotelController extends Controller
 {
     public function getHotel(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $hotels = Hotel::first();
         return view('admin/hotel/getHotel',['hotels'=>$hotels]);
     }

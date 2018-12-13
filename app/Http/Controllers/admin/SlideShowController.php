@@ -5,18 +5,25 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SlideShow;
+use Session;
 
 class SlideShowController extends Controller
 {
     public function getSlideShow(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $slideshows = SlideShow::orderBy('index','asc')->get();
         return view('admin.slideshow.getSlideShow',['slideshows'=>$slideshows]);
     }
     public function addSlideShow(){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         return view('admin.slideshow.addSlideShow');
     }
 
     public function editSlideShow($slideShowId){
+        if(!Session::has('statusLogin'))
+            return redirect('/admin/login')->with('notification','Phiên đăng nhập của bạn đã hết');
         $slideshow = SlideShow::find($slideShowId);
         return view('admin.slideshow.editSlideShow',['slideshow'=>$slideshow]);
     }
