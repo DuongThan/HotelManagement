@@ -88,12 +88,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <span class="hotel-search-label">Người lớn:</span>
+                    <span class="hotel-search-label">Số người:</span>
                     <input value="{{$booking->adult}}" type="text" readonly class="form-control">
-                </div>
-                <div class="form-group">
-                    <span class="hotel-search-label">Trẻ em:</span>
-                    <input value="{{$booking->child}}" type="text" readonly class="form-control">
                 </div>
             </div>
             <div class="col-md-12">

@@ -30,7 +30,6 @@ class BookingController extends Controller
         $booking->checkIn = $request->checkIn;
         $booking->checkOut = $request->checkOut;
         $booking->adult = $request->adult;
-        $booking->child = $request->child;
         $booking->totalMoney = $totalMoney;
         Session::put('datasavebooking', $dataPost);
         Session::put('booking', $booking);
@@ -54,21 +53,25 @@ class BookingController extends Controller
         $booking = Session::get('booking');
         $data = Session::get('datasavebooking');
         foreach(json_decode($data) as $item){
-            $bookingPost = new Booking();
-            $bookingPost->roomTypeId = $item->roomTypeId;
-            $bookingPost->checkIn = $booking->checkIn;
-            $bookingPost->checkOut = $booking->checkOut;
-            $bookingPost->adult = $booking->adult;
-            $bookingPost->child = $booking->child;
-            $bookingPost->totalMoney = $booking->totalMoney;
-            $bookingPost->fullName = $request->fullName;
-            $bookingPost->email = $request->email;
-            $bookingPost->phone = $request->phone;
-            $bookingPost->address = $request->address;
-            $bookingPost->request = $request->requestData;
-            $bookingPost->dateBook = Carbon::now()->format('Y-m-d');
-            $bookingPost->status = 1;
-            $bookingPost->save();
+           for($i=0; $i< $item->number; $i++){
+                $bookingPost = new Booking();
+                $bookingPost->roomTypeId = $item->roomTypeId;
+                $bookingPost->checkIn = $booking->checkIn;
+                $bookingPost->checkOut = $booking->checkOut;
+                $bookingPost->adult = $booking->adult;
+                $bookingPost->totalMoney = $item->price;
+                $bookingPost->fullName = $request->fullName;
+                $bookingPost->email = $request->email;
+                $bookingPost->phone = $request->phone;
+                $bookingPost->address = $request->address;
+                $bookingPost->request = $request->requestData;
+                $bookingPost->dateBook = Carbon::now()->format('Y-m-d H:i:s');
+                $bookingPost->status = 1;
+                if(count(json_decode($data)) > 1 || $item->number > 1){
+                    $bookingPost->note = 'Khách đặt theo nhóm. Số lượng khách bằng số lượng khách trong đoàn';
+                }
+                $bookingPost->save();
+           }
         }
         return redirect('confirm')->with('notification','Đặt phòng thành công');
     }

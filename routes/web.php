@@ -23,7 +23,16 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('put','admin\ArticleController@putArticle');
     });
 
-    Route::get('booking','admin\BookingController@getBooking');
+    // Quản trị booking
+    Route::group(['prefix'=>'booking'],function(){
+        Route::get('','admin\BookingController@getBooking');
+        Route::get('edit/{bookingId}','admin\BookingController@editBooking');
+        Route::post('put/{bookingId}','admin\BookingController@putBooking');
+        Route::get('diagram','admin\BookingController@getDiagramBooking');
+        Route::post('quick-book','admin\BookingController@postQuickBooking');
+        Route::post('quick-checkout','admin\BookingController@postCheckoutBooking');
+        Route::post('quick-checkin','admin\BookingController@postCheckinBooking');
+    });
 
     // Quản trị thông tin khách sạn
     Route::group(['prefix'=>'contact'],function(){

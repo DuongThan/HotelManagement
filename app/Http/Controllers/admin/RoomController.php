@@ -43,7 +43,6 @@ class RoomController extends Controller
         $room->code = $request->code;
         $room->roomTypeId = $request->roomTypeId;
         $room->index = $request->index;
-        $room->status = 1;
         $room->save();
         return redirect('admin/room/add')->with('notification','Thêm phòng thành công');
     }
@@ -60,7 +59,6 @@ class RoomController extends Controller
         $room = Room::find($roomId);
         $room->roomTypeId = $request->roomTypeId;
         $room->index = $request->index;
-        $room->status = $request->status;
         $room->save();
         return redirect('admin/room/edit/'.$roomId)->with('notification','Cập nhật thành công');
     }

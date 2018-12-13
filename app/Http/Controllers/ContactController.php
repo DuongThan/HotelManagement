@@ -28,7 +28,7 @@ class ContactController extends Controller
         $contact->phone = $request->phone;
         $contact->email = $request->email;
         $contact->request = $request->requestData;
-        $contact->date = Carbon::now()->format('Y-m-d');
+        $contact->date = Carbon::now()->format('Y-m-d H:i:s');
         $contact->save();
         return redirect('/lien-he')->with('notification','Thành công. Chúng tôi sẽ liên hệ với bạn ngay khi nhận được yêu cầu.');
     }

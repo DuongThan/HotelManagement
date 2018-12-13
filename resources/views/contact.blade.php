@@ -49,7 +49,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <span class="hotel-search-label">Yêu cầu thêm:</span>
-                <textarea name="requestData" value=" " rows="3" class="form-control"></textarea>
+                <textarea name="requestData" value=" " rows="5" class="form-control"></textarea>
             </div>
         </div>
         <div class="col-md-12 text-center">

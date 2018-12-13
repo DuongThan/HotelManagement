@@ -12,27 +12,11 @@
     <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/dist/css/AdminLTE.min.css")}}">
     <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/dist/css/skins/skin-blue-light.min.css")}}">
     <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css")}}">
+    <link rel="stylesheet" href="{{ asset("/css/layout_admin.css")}}">
     <script src="{{ asset("/ckeditor/ckeditor.js")}}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <style>
-        .box{
-            min-height:600px;
-            overflow: hidden;
-        }
-        .box-list td, .box-list th{
-            vertical-align: middle !important;
-        }
-        table{
-            border-collapse: collapse !important;
-        }
-        #datatable img{
-            width:30px;
-            height:30px
-        }
-        #datatable_slideshow img{
-            height:30px
-        }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
 </head>
 
 <body class="hold-transition skin-blue-light sidebar-mini">
@@ -88,7 +72,7 @@
                             <i class="fa fa-envelope"></i> <span>Booking</span> <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/admin/diagram"><i class="fa fa-circle-o"></i>Sơ đồ phòng</a></li>
+                            <li><a href="/admin/booking/diagram"><i class="fa fa-circle-o"></i>Sơ đồ phòng</a></li>
                             <li><a href="/admin/booking"><i class="fa fa-circle-o"></i>Danh sách đặt phòng</a></li>
                         </ul>
                     </li>

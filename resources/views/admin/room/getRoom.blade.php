@@ -26,7 +26,6 @@
                                         <th>Loại phòng</th>
                                         <th>Số hiệu phòng</th>
                                         <th style="width:80px">Thứ tự</th>
-                                        <th style="width:80px">Trạng thái</th>
                                         <th style="width:150px"></th>
                                     </tr>
                                 </thead>
@@ -37,11 +36,6 @@
                                         <td>{{$item->title}}</td>
                                         <td>{{$item->code}}</td>
                                         <td>{{$item->index}}</td>
-                                        <td>
-                                            <small class="label {{$item->status == 1?'label-success':'label-danger'}} ">
-                                                {{$item->status == 1?'Phòng sạch':'Phòng bẩn'}}
-                                            </small>
-                                        </td>
                                         <td class="text-center">
                                             <a href="room/edit/{{$item->roomId}}" class="btn btn-primary btn-sm">Chỉnh
                                                 sửa</a>

@@ -48,13 +48,6 @@
                                     <label>Thứ tự</label>
                                     <input require type="number" min="0" value="{{$room->index}}" name="index" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label>Trạng thái phòng</label>
-                                    <select name="status" class="form-control">
-                                        <option {{$room->status==1?'selected':''}} value="1">Phòng sạch</option>
-                                        <option {{$room->status==0?'selected':''}} value="0">Phòng bẩn</option>
-                                    </select>
-                                </div>
                                 <div>
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                                     <a href="/admin/room" class="btn btn-default">Trở về danh sách phòng</a>

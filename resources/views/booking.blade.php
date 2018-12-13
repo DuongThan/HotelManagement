@@ -66,16 +66,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <span class="hotel-search-label">Người lớn:</span>
+                                        <span class="hotel-search-label">Số người:</span>
                                         <select name="adult" class="form-control">
-                                            @for ($i =1; $i <= 10 ; $i++) <option {{$i == 2?'selected':''}} value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <span class="hotel-search-label">Trẻ em:</span>
-                                        <select name="child" class="form-control">
-                                            @for ($i = 0; $i <= 5 ; $i++) <option value="{{$i}}">{{$i}}</option>
+                                            @for ($i =1; $i <= 15 ; $i++) <option {{$i == 2?'selected':''}} value="{{$i}}">{{$i}}</option>
                                                 @endfor
                                         </select>
                                     </div>
