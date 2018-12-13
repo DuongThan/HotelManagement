@@ -16,6 +16,65 @@
         <div class="row" style="margin-top:10px">
             <div class="col-md-12">
                 <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="box-booking-book" ng-cloak>
+                            <h5 class="header-booking-book">Thông tin đặt phòng</h5>
+                            <div class="col-md-12">
+                                <form method="POST" action="search">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <div class="form-group">
+                                        <span class="hotel-search-label">Ngày đến:</span>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="date" class="form-control" name="checkIn" value="{{$booking->checkIn}}"
+                                                maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="hotel-search-label">Ngày đi:</span>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="date" class="form-control" name="checkOut" value="{{$booking->checkOut}}"
+                                                maxlength="10">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="hotel-search-label">Số người:</span>
+                                        <select name="adult" class="form-control">
+                                            @for ($i =1; $i <= 15 ; $i++) <option
+                                                {{$i == $booking->adult?'selected':''}} value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                        </select>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-primary">Tìm kiếm đặt phòng</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-12" ng-if="roomBooks.length == 0">
+                                <h4 class="book-empty">VUI LÒNG CHỌN PHÒNG</h4>
+                            </div>
+                            <div class="col-md-12" ng-if="roomBooks.length > 0">
+                                <h5 class="book-empty">Phòng đã chọn</h5>
+                                <ul style="padding-left: 20px;">
+                                    <li ng-repeat="item in roomBooks" style="color: #0088b1;">
+                                        @{{item.title}} x @{{item.number}}
+                                    </li>
+                                </ul>
+                                <h5 class="book-totalprice">
+                                    Tổng: <span>@{{totalPrice |currency: '':'0'}} ₫</span>
+                                </h5>
+                            </div>
+                            <div class="@{{roomBooks.length == 0?'hidden':''}} col-md-12 text-center" style="margin-top:20px">
+                                <form method="post" action="saveSessionBooking">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <input type="hidden" id="dataWaitPost" name="datapost" />
+                                    <button class="btn btn-primary">Đặt phòng</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-9">
                         @foreach($roomtypes as $item)
                         <div class="box-list-room">
@@ -44,58 +103,6 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-3">
-                        <div class="box-booking-book" ng-cloak>
-                            <h5 class="header-booking-book">Thông tin đặt phòng</h5>
-                            <form method="post" action="saveSessionBooking">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <span class="hotel-search-label">Ngày đến:</span>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                            <input type="date" class="form-control" name="checkIn"
-                                                value="{{date('Y-m-d')}}" maxlength="10">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <span class="hotel-search-label">Ngày đi:</span>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                            <input type="date" class="form-control" name="checkOut"
-                                                value="{{$checkout}}" maxlength="10">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <span class="hotel-search-label">Số người:</span>
-                                        <select name="adult" class="form-control">
-                                            @for ($i =1; $i <= 15 ; $i++) <option {{$i == 2?'selected':''}} value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12" ng-if="roomBooks.length == 0">
-                                    <h4 class="book-empty">VUI LÒNG CHỌN PHÒNG</h4>
-                                </div>
-                                <div class="col-md-12" ng-if="roomBooks.length > 0">
-                                    <h5 class="book-empty">Phòng đã chọn</h5>
-                                    <ul style="padding-left: 20px;">
-                                        <li ng-repeat="item in roomBooks" style="color: #0088b1;">
-                                            @{{item.title}} x @{{item.number}}
-                                        </li>
-                                    </ul>
-                                    <h5 class="book-totalprice">
-                                        Tổng: <span>@{{totalPrice |currency: '':'0'}} ₫</span>
-                                    </h5>
-                                </div>
-                                <div class="@{{roomBooks.length == 0?'hidden':''}} col-md-12 text-center" style="margin-top:20px">
-
-                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    <input type="hidden" id="dataWaitPost" name="datapost" />
-                                    <button class="btn btn-primary">Đặt phòng</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -122,7 +129,7 @@
                     }
                     $scope.roomBooks.push(room);
                 } else
-                    roomBookExist.number += 1;
+                    roomBookExist.number += parseInt(numberBook);
                 $scope.totalPrice = 0;
                 for (var i = 0; i < $scope.roomBooks.length; i++) {
                     $scope.totalPrice += $scope.roomBooks[i].price * $scope.roomBooks[i].number

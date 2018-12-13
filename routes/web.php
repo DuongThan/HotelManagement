@@ -39,7 +39,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('quick-checkin','admin\BookingController@postCheckinBooking');
     });
 
-    // Quản trị thông tin khách sạn
+    // Quản trị thông tin lien he
     Route::group(['prefix'=>'contact'],function(){
         Route::get('','admin\ContactController@getContact');
         Route::get('edit/{contactId}','admin\ContactController@editContact');
@@ -84,10 +84,12 @@ Route::group(['prefix'=>'admin'],function(){
 });
 
 // Website
-Route::get('','HomeController@Index');
+Route::get('','BookingController@Index');
 Route::get('gioi-thieu','HomeController@Index');
 
 Route::get('dat-phong','BookingController@Index');
+Route::post('search','BookingController@Search');
+
 Route::post('saveSessionBooking','BookingController@SaveSessionBooking');
 Route::get('confirm','BookingController@ConfirmBooking');
 Route::post('postBooking','BookingController@PostBooking');

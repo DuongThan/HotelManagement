@@ -93,7 +93,6 @@ class BookingController extends Controller
                 $room->trangthaidatphong = 2;
             }
         }
-        $rooms[0]->ahihi = 10;
         return view('admin/booking/diagram',['rooms'=>$rooms]);
     }
     public function postQuickBooking(Request $request){

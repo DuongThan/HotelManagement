@@ -7,13 +7,35 @@ use App\RoomType;
 use App\Booking;
 use Carbon\Carbon;
 use Session;
+use DateTime;
 
 class BookingController extends Controller
 {
     public function Index(){
         $roomtypes = RoomType::orderBy('index','asc')->get();
-        $checkout = Carbon::now()->addDays(1)->format('Y-m-d');
-        return view('booking',['roomtypes'=>$roomtypes],['checkout'=>$checkout]);
+        $booking = new Booking();
+        $booking->checkIn = Carbon::now()->format('Y-m-d');
+        $booking->checkOut =  Carbon::now()->addDays(1)->format('Y-m-d');
+        $booking->adult =  2;
+        Session::put('booking', $booking);
+        return view('booking',['roomtypes'=>$roomtypes],['booking'=>$booking]);
+    }
+    
+    public function Search(Request $request){
+        $booking = Session::get('booking');
+        $booking->checkIn = $request->checkIn;
+        $booking->checkOut = $request->checkOut;
+        $booking->adult = $request->adult;
+        Session::put('booking', $booking);
+        $datetime1 = new DateTime($booking->checkIn);
+        $datetime2 = new DateTime($booking->checkOut);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+        $roomtypes = RoomType::orderBy('index','asc')->get();
+        foreach($roomtypes as $item){
+            $item->price *= $days;
+        }
+        return view('booking',['roomtypes'=>$roomtypes],['booking'=>$booking]);
     }
     public function ConfirmBooking() {
         $data = Session::get('datasavebooking');
@@ -26,10 +48,7 @@ class BookingController extends Controller
         foreach(json_decode($dataPost) as $item){
             $totalMoney += $item->price * $item->number;
         }
-        $booking = new Booking();
-        $booking->checkIn = $request->checkIn;
-        $booking->checkOut = $request->checkOut;
-        $booking->adult = $request->adult;
+        $booking = Session::get('booking');
         $booking->totalMoney = $totalMoney;
         Session::put('datasavebooking', $dataPost);
         Session::put('booking', $booking);
