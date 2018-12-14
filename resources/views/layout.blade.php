@@ -100,7 +100,7 @@
                         <span class="glyphicon glyphicon-chevron-right"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                </div>
+                </div> 
             </div>
             <div class="col-md-12 box-search-room" style="padding-top: 15px;">
                 @yield('content')
