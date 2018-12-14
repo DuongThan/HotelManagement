@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Session;
 use DateTime;
 use App\Hotel;
+use App\SlideShow;
 
 class BookingController extends Controller
 {
@@ -21,6 +22,8 @@ class BookingController extends Controller
         $booking->checkOut =  Carbon::now()->addDays(1)->format('Y-m-d');
         $booking->adult =  2;
         Session::put('booking', $booking);
+        $slideshows = SlideShow::orderBy('index','asc')->get();
+        Session::put('slideshows', $slideshows);
         return view('booking',['roomtypes'=>$roomtypes],['booking'=>$booking]);
     }
     

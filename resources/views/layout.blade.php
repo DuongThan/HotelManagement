@@ -74,7 +74,7 @@
         </div>
     </div>
     <div class="row">
-
+        
     </div>
     <div class="container">
         <div class="row" style="margin-top: 10px;">
@@ -86,17 +86,11 @@
                         <li data-target="#myCarousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-
-                        <div class="item active">
-                            <img src="/images/1544527937.1811_NhatTet.jpg" alt="Los Angeles" style="width:100%;">
+                        @foreach(Session::get('slideshows') as $item)
+                        <div class="item {{$loop->iteration == 1?'active':''}}">
+                            <img src="/images/{{$item->image}}" alt="Los Angeles" style="width:100%;">
                         </div>
-                        <div class="item">
-                            <img src="/images/1544528281.1811_DuXuanxuDai.jpg" alt="Chicago" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="/images/1544528262.1811_hanquocTetKyHoi.jpg" alt="New York" style="width:100%;">
-                        </div>
+                        @endforeach
                     </div>
                     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -114,7 +108,7 @@
         </div>
     </div>
     <div class="footer">
-        <span id="copyright">Copyright © 2018 <a href="https://nhom2hotel.vn">https://nhom2hotel.vn</a>.</span> </div>
+        <span id="copyright">Copyright © 2018 <a href="{{ Session::get('hotel')->name }}">{{ Session::get('hotel')->name }}</a>.</span> </div>
 </body>
 
 </html>
